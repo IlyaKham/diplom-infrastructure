@@ -33,3 +33,9 @@ kubeconfig*
 .env
 .env.*
 !.env.example
+
+# Local helper scripts and report images stay outside source control.
+*.ps1
+*.sh
+/screenshots/
+/docs/screenshots/
