@@ -1,4 +1,0 @@
-NAME                 STATUS   ROLES    AGE   VERSION   INTERNAL-IP   EXTERNAL-IP      OS-IMAGE             KERNEL-VERSION       CONTAINER-RUNTIME
-diplom-worker-acez   Ready    <none>   40m   v1.35.1   10.40.0.6     153.51.114.210   Ubuntu 22.04.5 LTS   5.15.0-191-generic   containerd://2.2.1
-diplom-worker-ejyg   Ready    <none>   40m   v1.35.1   10.30.0.31    153.51.173.134   Ubuntu 22.04.5 LTS   5.15.0-191-generic   containerd://2.2.1
-diplom-worker-igon   Ready    <none>   40m   v1.35.1   10.10.0.26    84.252.128.99    Ubuntu 22.04.5 LTS   5.15.0-191-generic   containerd://2.2.1

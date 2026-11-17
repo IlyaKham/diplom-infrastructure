@@ -47,7 +47,7 @@ spec:
               app.kubernetes.io/name: diplom-app
       containers:
         - name: nginx
-          image: cr.yandex/crp85lbhbo07ldt2oj0c/diplom-app@sha256:a8ddcb81bd996cd1c8a70a0ee6b91661986666116f9e62309989f6e9c5f373d9
+          image: cr.yandex/crp85lbhbo07ldt2oj0c/diplom-app@sha256:3e2d086d30d4a3069ca115ef5acfc253c7d1e199c6a3c848c17637203d7fbc81
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

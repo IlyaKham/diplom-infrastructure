@@ -121,7 +121,8 @@ grafana:
   grafana.ini:
     server:
       serve_from_sub_path: true
-      # root_url and domain are filled from the LoadBalancer IP by the deploy script.
+      domain: '46.243.210.163'
+      root_url: 'http://46.243.210.163/grafana/'
     users:
       allow_sign_up: false
     auth.anonymous:

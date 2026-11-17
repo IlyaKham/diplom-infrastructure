@@ -1,9 +1,0 @@
-yandex_vpc_network.main: Refreshing state... [id=enppkt7gcb9ffjrinh9t]
-yandex_vpc_subnet.main["ru-central1-a"]: Refreshing state... [id=e9b6kk2vq6spoog2mspt]
-yandex_vpc_subnet.main["ru-central1-d"]: Refreshing state... [id=fl8takd3k5uf2bctlnv8]
-yandex_vpc_subnet.main["ru-central1-b"]: Refreshing state... [id=e2l93u7ertnbbnunf0lf]
-
-No changes. Your infrastructure matches the configuration.
-
-Terraform has compared your real infrastructure against your configuration
-and found no differences, so no changes are needed.

@@ -1,28 +1,32 @@
-# Инфраструктура диплома
+# Диплом DevOps: Yandex Cloud и GitHub Actions
 
-Этап 1 выполнен: подготовлены сервисный аккаунт, бакет состояния Terraform и сеть с тремя подсетями. Проверены удаление и повторное создание сетевых ресурсов.
+[Отчёт по всем этапам со скриншотами](REPORT.md)
 
-Выполнен [этап 2 — Managed Kubernetes](docs/02-kubernetes.md): региональный мастер и три Ready-узла в a/d/e, 23 системных пода Running, итоговый план `No changes`. Результаты: [облачная проверка](docs/02-cloud-validation.md), [чек-лист](docs/02-checklist.md), [скриншоты](docs/02-screenshots.md). Пустая подсеть b заменена e по результатам проверки квот. Доступ к API ограничен двумя собственными IP и работает при включённом VPN.
+- [Приложение](http://46.243.210.163/) — релиз `v1.0.0`.
+- [Grafana](http://46.243.210.163/grafana/) — логин `admin`, пароль передаётся преподавателю отдельно.
+- [Исходники приложения и Dockerfile](https://github.com/IlyaKham/diplom-app).
 
-Начни с [пошаговой инструкции](docs/01-infrastructure.md). Требования и статусы проверок: [чек-лист этапа](docs/01-checklist.md).
+## Реализация
 
-Локальные проверки конфигураций пройдены: [результаты](docs/01-local-validation.md). Для инфраструктуры и S3 backend используется один аккаунт `diplom-terraform`. [Облачная проверка](docs/01-cloud-validation.md), [памятка по скриншотам](docs/01-screenshots.md).
+| Каталог | Назначение |
+| --- | --- |
+| `bootstrap/` | Аккаунт, профильные права и закрытый бакет Terraform state; отдельный локальный state |
+| `terraform/` | VPC, три подсети, региональный Kubernetes, прерываемые рабочие группы и Container Registry; S3 backend |
+| `kubernetes/` | Манифесты приложения, настройки Traefik, мониторинга и временных Actions runners |
+| `.github/workflows/terraform.yml` | Проверка обоих модулей и автоматические plan/apply основного модуля при push в main |
+| `ci/prepare-terraform.sh` | Подготовка временных credentials, tfvars и backend внутри задания Actions |
+| `docs/screenshots/` | Оригинальные снимки для отчёта |
 
-Два независимых корневых модуля Terraform:
+Terraform 1.14.0, Yandex provider 0.248.0. Версии и контрольные суммы Helm-чартов указаны в `kubernetes/charts.lock.json` и `kubernetes/actions-runner/charts.lock.json`.
 
-- `bootstrap/` создаёт сервисный аккаунт и S3-бакет, управляет профильными правами. Повторно применяется при добавлении прав следующих этапов. State хранится локально и не попадает в Git.
-- `terraform/` создаёт основную инфраструктуру. State и блокировка хранятся в бакете. На первом этапе здесь только VPC и три подсети.
+## Параметры и секреты
 
-Если сервисный аккаунт Terraform уже существует, можно передать его ID в `existing_terraform_service_account_id` модуля bootstrap. Тогда новый аккаунт для Terraform не создаётся; сначала проверяем назначение и имеющиеся роли существующего аккаунта. Локальные файлы с уже введёнными значениями автоматически не перезаписываются.
+Для нового развёртывания нужны заполненные локальные копии `bootstrap/terraform.tfvars.example`, `terraform/terraform.tfvars.example` и `terraform/backend.hcl.example`. Bootstrap выполняется с временным `YC_TOKEN` владельца каталога. Для основного модуля используются `YC_SERVICE_ACCOUNT_KEY_FILE`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` одного аккаунта диплома.
 
-В текущем проекте выбран новый отдельный аккаунт диплома. Существующий `service-acc` не используется и не изменяется; `existing_terraform_service_account_id` оставляем `null`.
+В Actions инфраструктуры заданы Secrets `YC_SERVICE_ACCOUNT_KEY`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `API_ALLOWED_CIDRS` (JSON-массив собственных IPv4 /32); Variables перечислены в `ci/variables.example.json`. В приложении нужны Secret `YC_SERVICE_ACCOUNT_KEY` и Variables `YC_REGISTRY_ID`, `APPLICATION_URL`.
 
-На [этапе 3](docs/03-application.md) в основной модуль добавляется приватный Yandex Container Registry `diplom-registry`. Профильная роль `container-registry.editor` для того же аккаунта управляется bootstrap. Отдельный репозиторий приложения находится в соседнем каталоге `application`.
+Мониторинг использует существующий Kubernetes Secret `diplom-grafana-admin` с ключами `admin-user` и `admin-password`. ARC использует `diplom-github-auth` в namespace `diplom-actions-runners`, ключ `github_token`: fine-grained PAT только для репозитория приложения с Administration: Read and write. Значения вводит владелец; в Git они не хранятся.
 
-Выполнено развёртывание [этапа 4](docs/04-cloud-validation.md): приложение и Grafana доступны по HTTP 80, работают Prometheus, Alertmanager и три node-exporter. [Команды воспроизведения](kubernetes/README.md), [скриншоты](docs/04-screenshots.md). Автоматический Terraform pipeline остаётся для следующего этапа GitHub Actions.
+Helm-релизы: `diplom-ingress` (Traefik 42.4.0), `diplom-monitoring` (kube-prometheus-stack 93.3.1), `diplom-arc` и `diplom-deploy` (ARC 0.15.1). Для них используются соответствующие `values.yaml`. Приложение применяется через `kubectl apply -k kubernetes/application`. В манифесте закреплён проверенный digest v1.0.0; последующие релизы обновляет workflow приложения.
 
-Подготовлен [этап 5 GitHub Actions](docs/05-github-actions.md): workflow Terraform, контроллер временных исполнителей, RBAC деплоя и настройка Secrets. [Галерея облачных ресурсов](docs/00-cloud-gallery.md), [галерея Grafana](docs/04-gallery.md).
-
-`bootstrap` запускается владельцем каталога. Основной модуль и S3 backend используют один аккаунт `diplom-terraform` без универсальных ролей `admin`, `editor` или владельца облака. Для сети ему назначается `vpc.admin` в каталоге диплома, для backend — `storage.editor` только на созданный бакет. Потребуются два типа ключей одного аккаунта: авторизованный JSON-ключ для провайдера и статический ключ для S3.
-
-Зависимости зафиксированы: Terraform 1.14.x и Yandex provider 0.248.0. Файлы `.terraform.lock.hcl` нужно публиковать вместе с конфигурациями; ключи и state публиковать нельзя.
+При пересоздании балансировщика нужно обновить IP Grafana в `kubernetes/monitoring/values.yaml` и Variable `APPLICATION_URL`. Пароль Grafana, облачные ключи, локальные tfvars, backend, kubeconfig и state исключены из Git. Вспомогательные PowerShell-скрипты и промежуточные журналы удалены из актуального состава проекта.

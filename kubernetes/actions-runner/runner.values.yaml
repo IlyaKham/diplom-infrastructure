@@ -1,4 +1,4 @@
-# githubConfigUrl is filled by the installation script from the application repo URL.
+githubConfigUrl: https://github.com/IlyaKham/diplom-app
 githubConfigSecret: diplom-github-auth
 runnerScaleSetName: diplom-deploy
 minRunners: 0
