@@ -1,0 +1,44 @@
+{
+  "id": "enpv4hbqdvcohvkhpc0j",
+  "folder_id": "b1g24bbo07alb7mpt3f0",
+  "created_at": "2026-11-17T10:35:19Z",
+  "name": "k8s-4c1deaabc0d65723084696a02419c0fed25a5826",
+  "description": "cluster catvplbme7oeheppsa9a, service diplom-ingress/diplom-ingress",
+  "labels": {
+    "cluster-name": "catvplbme7oeheppsa9a",
+    "service-name": "diplom-ingress",
+    "service-namespace": "diplom-ingress",
+    "service-uid": "dd9ae689-d5f7-4562-81f4-e91077a7ede9"
+  },
+  "region_id": "ru-central1",
+  "status": "ACTIVE",
+  "type": "EXTERNAL",
+  "listeners": [
+    {
+      "name": "web",
+      "address": "46.243.210.163",
+      "port": "80",
+      "protocol": "TCP",
+      "ip_version": "IPV4",
+      "target_port": "30080"
+    }
+  ],
+  "attached_target_groups": [
+    {
+      "target_group_id": "enp6sbsvfbp2musub4hm",
+      "health_checks": [
+        {
+          "name": "default",
+          "interval": "10s",
+          "timeout": "5s",
+          "unhealthy_threshold": "2",
+          "healthy_threshold": "2",
+          "http_options": {
+            "port": "10256",
+            "path": "/healthz"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: diplom-ingress
+  labels:
+    app.kubernetes.io/part-of: diplom
+    pod-security.kubernetes.io/enforce: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: diplom-monitoring
+  labels:
+    app.kubernetes.io/part-of: diplom
+    # node-exporter needs access to host namespaces and the host filesystem.
+    pod-security.kubernetes.io/enforce: privileged
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: diplom-app
+  labels:
+    app.kubernetes.io/part-of: diplom
+    pod-security.kubernetes.io/enforce: restricted

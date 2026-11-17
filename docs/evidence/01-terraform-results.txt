@@ -1,0 +1,25 @@
+﻿Диплом DevOps — этап 1. Фактические результаты Terraform
+Дата: 15 ноября 2026 года
+
+Удаление сети и трёх подсетей (проверенный plan -destroy + apply):
+Apply complete! Resources: 0 added, 0 changed, 4 destroyed.
+
+Повторное создание той же конфигурацией:
+Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
+
+Итоговая проверка после переименования в diplom:
+No changes. Your infrastructure matches the configuration.
+
+Проверенные параметры:
+Аккаунт: diplom-terraform
+Сеть: diplom-network
+ID сети: enppkt7gcb9ffjrinh9t
+Подсети: ru-central1-a, ru-central1-b, ru-central1-d
+Backend: S3, бакет diploma-tfstate-bbe2400261af
+Объект состояния: diploma/infrastructure.tfstate
+S3 lockfile: включён; lineage сохранён
+State serial: 1 -> 4
+
+Выдержка сформирована из реальных журналов; полные журналы лежат рядом.
+В журналах удаления и создания сохранены имена на момент выполнения.
+После этого имена обновлены на diplom-* без пересоздания; бакет оставлен прежним.

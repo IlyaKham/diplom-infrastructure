@@ -1,0 +1,31 @@
+yandex_vpc_network.main: Modifying... [id=enppkt7gcb9ffjrinh9t]
+yandex_vpc_network.main: Still modifying... [id=enppkt7gcb9ffjrinh9t, 00m10s elapsed]
+yandex_vpc_network.main: Still modifying... [id=enppkt7gcb9ffjrinh9t, 00m20s elapsed]
+yandex_vpc_network.main: Modifications complete after 23s [id=enppkt7gcb9ffjrinh9t]
+yandex_vpc_subnet.main["ru-central1-b"]: Modifying... [id=e2l93u7ertnbbnunf0lf]
+yandex_vpc_subnet.main["ru-central1-d"]: Modifying... [id=fl8takd3k5uf2bctlnv8]
+yandex_vpc_subnet.main["ru-central1-a"]: Modifying... [id=e9b6kk2vq6spoog2mspt]
+yandex_vpc_subnet.main["ru-central1-d"]: Modifications complete after 0s [id=fl8takd3k5uf2bctlnv8]
+yandex_vpc_subnet.main["ru-central1-a"]: Modifications complete after 0s [id=e9b6kk2vq6spoog2mspt]
+yandex_vpc_subnet.main["ru-central1-b"]: Modifications complete after 0s [id=e2l93u7ertnbbnunf0lf]
+Releasing state lock. This may take a few moments...
+
+Apply complete! Resources: 0 added, 4 changed, 0 destroyed.
+
+Outputs:
+
+network_id = "enppkt7gcb9ffjrinh9t"
+subnets = {
+  "ru-central1-a" = {
+    "cidr" = "10.10.0.0/24"
+    "id" = "e9b6kk2vq6spoog2mspt"
+  }
+  "ru-central1-b" = {
+    "cidr" = "10.20.0.0/24"
+    "id" = "e2l93u7ertnbbnunf0lf"
+  }
+  "ru-central1-d" = {
+    "cidr" = "10.30.0.0/24"
+    "id" = "fl8takd3k5uf2bctlnv8"
+  }
+}

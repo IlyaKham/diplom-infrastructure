@@ -1,0 +1,18 @@
+[
+  {
+    "subnet_id": "ajc890ivkp2gcf45hpbl",
+    "address": "10.40.0.6",
+    "status": "HEALTHY"
+  },
+  {
+    "subnet_id": "e9b6kk2vq6spoog2mspt",
+    "address": "10.10.0.26",
+    "status": "HEALTHY"
+  },
+  {
+    "subnet_id": "fl8takd3k5uf2bctlnv8",
+    "address": "10.30.0.31",
+    "status": "HEALTHY"
+  }
+]
+

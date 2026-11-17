@@ -1,0 +1,17 @@
+# Скопируй в backend.hcl. Имя бакета возьми из bootstrap output.
+# Ключи сюда не записывай: используются AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY.
+bucket = "REPLACE_WITH_CREATED_BUCKET_NAME"
+key    = "diploma/infrastructure.tfstate"
+region = "ru-central1"
+
+endpoints = {
+  s3 = "https://storage.yandexcloud.net"
+}
+
+skip_region_validation      = true
+skip_credentials_validation = true
+skip_requesting_account_id  = true
+skip_metadata_api_check     = true
+skip_s3_checksum            = true
+use_path_style              = true
+use_lockfile                = true

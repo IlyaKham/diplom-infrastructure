@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: diplom-actions-deployer
+  namespace: diplom-actions-runners
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: diplom-actions-deployer
+  namespace: diplom-app
+rules:
+  - apiGroups: [apps]
+    resources: [deployments]
+    resourceNames: [diplom-app]
+    verbs: [get, watch, patch, update]
+  - apiGroups: ['']
+    resources: [pods]
+    verbs: [get, list, watch]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: diplom-actions-deployer
+  namespace: diplom-app
+subjects:
+  - kind: ServiceAccount
+    name: diplom-actions-deployer
+    namespace: diplom-actions-runners
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: diplom-actions-deployer
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: diplom-deploy-kubeconfig
+  namespace: diplom-actions-runners
+data:
+  config: |
+    apiVersion: v1
+    kind: Config
+    clusters:
+      - name: diplom
+        cluster:
+          server: https://kubernetes.default.svc
+          certificate-authority: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    users:
+      - name: deployer
+        user:
+          tokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    contexts:
+      - name: diplom
+        context:
+          cluster: diplom
+          user: deployer
+          namespace: diplom-app
+    current-context: diplom
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: diplom-runner-egress
+  namespace: diplom-actions-runners
+spec:
+  podSelector: {}
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+            except:
+              - 169.254.169.254/32

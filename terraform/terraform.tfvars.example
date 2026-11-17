@@ -1,0 +1,28 @@
+# Скопируй в terraform.tfvars. Используй те же значения, что в bootstrap.
+cloud_id     = "REPLACE_WITH_CLOUD_ID"
+folder_id    = "REPLACE_WITH_FOLDER_ID"
+project_name = "diplom"
+
+# При необходимости выбери другую тройку доступных зон ДО первого apply.
+# Подсети не должны пересекаться между собой и с будущими pod/service CIDR.
+subnets = {
+  ru-central1-a = "10.10.0.0/24"
+  ru-central1-e = "10.40.0.0/24"
+  ru-central1-d = "10.30.0.0/24"
+}
+
+# ID того же аккаунта diplom-terraform из bootstrap output.
+service_account_id = "REPLACE_WITH_SERVICE_ACCOUNT_ID"
+kubernetes_version = "1.35"
+
+# Замени пример своим текущим внешним IPv4 /32.
+api_allowed_cidrs = ["203.0.113.10/32"]
+
+worker_platform_id   = "standard-v3"
+worker_memory_gb     = 4
+worker_core_fraction = 20
+
+# В зоне e одобрена квота SSD; в a/d используем HDD.
+worker_disk_types = {
+  ru-central1-e = "network-ssd"
+}

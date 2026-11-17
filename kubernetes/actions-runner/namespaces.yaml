@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: diplom-actions-system
+  labels:
+    app.kubernetes.io/part-of: diplom
+    pod-security.kubernetes.io/enforce: restricted
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: diplom-actions-runners
+  labels:
+    app.kubernetes.io/part-of: diplom
+    pod-security.kubernetes.io/enforce: restricted

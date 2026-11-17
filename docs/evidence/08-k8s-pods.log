@@ -1,0 +1,24 @@
+NAMESPACE     NAME                                                 READY   STATUS    RESTARTS      AGE
+kube-system   calico-node-c8wjx                                    1/1     Running   0             40m
+kube-system   calico-node-dht6z                                    1/1     Running   0             41m
+kube-system   calico-node-l8xxn                                    1/1     Running   0             40m
+kube-system   calico-typha-5d9fddc5db-475hn                        1/1     Running   0             39m
+kube-system   calico-typha-horizontal-autoscaler-9b74c95f8-gbtj5   1/1     Running   0             45m
+kube-system   calico-typha-vertical-autoscaler-5c545f644d-fz85s    1/1     Running   3 (40m ago)   45m
+kube-system   coredns-dfd9cfcc9-8vhkq                              1/1     Running   0             44m
+kube-system   coredns-dfd9cfcc9-jmqwk                              1/1     Running   0             40m
+kube-system   ip-masq-agent-74rzb                                  1/1     Running   0             40m
+kube-system   ip-masq-agent-c6n4j                                  1/1     Running   0             41m
+kube-system   ip-masq-agent-fk2rf                                  1/1     Running   0             40m
+kube-system   kube-dns-autoscaler-86b7bddd47-ndfxk                 1/1     Running   0             44m
+kube-system   kube-proxy-kzhfn                                     1/1     Running   0             40m
+kube-system   kube-proxy-lpbb4                                     1/1     Running   0             40m
+kube-system   kube-proxy-zbfwn                                     1/1     Running   0             41m
+kube-system   metrics-server-59dcc6d845-gz7z9                      1/1     Running   0             44m
+kube-system   metrics-server-59dcc6d845-l8qvg                      1/1     Running   0             44m
+kube-system   npd-v0.8.0-2kv6m                                     1/1     Running   0             40m
+kube-system   npd-v0.8.0-jmrrx                                     1/1     Running   0             41m
+kube-system   npd-v0.8.0-q9jxq                                     1/1     Running   0             40m
+kube-system   yc-disk-csi-node-v2-528zj                            6/6     Running   0             40m
+kube-system   yc-disk-csi-node-v2-s586w                            6/6     Running   0             41m
+kube-system   yc-disk-csi-node-v2-zvn7j                            6/6     Running   0             40m

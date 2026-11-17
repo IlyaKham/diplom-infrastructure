@@ -1,0 +1,12 @@
+{
+  "infrastructure": {
+    "YC_CLOUD_ID": "b1g796p3nqrgb3h49s2f",
+    "YC_FOLDER_ID": "b1g24bbo07alb7mpt3f0",
+    "YC_SERVICE_ACCOUNT_ID": "ajeaaeokme5na3bguqmu",
+    "TF_STATE_BUCKET": "diploma-tfstate-bbe2400261af"
+  },
+  "application": {
+    "YC_REGISTRY_ID": "crp85lbhbo07ldt2oj0c",
+    "APPLICATION_URL": "http://46.243.210.163/"
+  }
+}

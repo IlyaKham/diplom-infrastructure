@@ -1,0 +1,9 @@
+# Скопируй в terraform.tfvars и заполни локально.
+cloud_id          = "REPLACE_WITH_CLOUD_ID"
+folder_id         = "REPLACE_WITH_FOLDER_ID"
+project_name      = "diplom"
+state_bucket_name = "replace-with-unique-diplom-tfstate-name"
+
+# Если аккаунт уже существует, замени null его ID в кавычках.
+# ID не является секретом. Приватный JSON ключ в этот файл не добавляется.
+existing_terraform_service_account_id = null

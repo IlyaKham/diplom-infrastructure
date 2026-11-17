@@ -1,0 +1,14 @@
+[
+  {
+    "name": "gha-runner-scale-set-controller",
+    "version": "0.15.1",
+    "repository": "oci://ghcr.io/actions/actions-runner-controller-charts",
+    "sha256": "248807b8ff55fd1a5cc7bb5250558092a162637cfb875ba041eddeeaa51cd747"
+  },
+  {
+    "name": "gha-runner-scale-set",
+    "version": "0.15.1",
+    "repository": "oci://ghcr.io/actions/actions-runner-controller-charts",
+    "sha256": "233b3c53a7c5ebe91f24ca87736f4b76caf1ae2079482a1d036da828cbe247b1"
+  }
+]

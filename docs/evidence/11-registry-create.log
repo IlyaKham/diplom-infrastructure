@@ -1,0 +1,34 @@
+yandex_container_registry.application: Creating...
+yandex_container_registry.application: Still creating... [00m10s elapsed]
+yandex_container_registry.application: Still creating... [00m20s elapsed]
+yandex_container_registry.application: Still creating... [00m30s elapsed]
+yandex_container_registry.application: Creation complete after 36s [id=crp85lbhbo07ldt2oj0c]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+application_image_repository = "cr.yandex/crp85lbhbo07ldt2oj0c/diplom-app"
+container_registry_id = "crp85lbhbo07ldt2oj0c"
+kubernetes_cluster_id = "catvplbme7oeheppsa9a"
+kubernetes_endpoint = "https://46.243.211.251"
+kubernetes_node_group_ids = {
+  "ru-central1-a" = "cataru4bue33udus5i5f"
+  "ru-central1-d" = "catgjvmcs3orj6u0jndo"
+  "ru-central1-e" = "catccq29qse4qsh4fpb9"
+}
+network_id = "enppkt7gcb9ffjrinh9t"
+subnets = {
+  "ru-central1-a" = {
+    "cidr" = "10.10.0.0/24"
+    "id" = "e9b6kk2vq6spoog2mspt"
+  }
+  "ru-central1-d" = {
+    "cidr" = "10.30.0.0/24"
+    "id" = "fl8takd3k5uf2bctlnv8"
+  }
+  "ru-central1-e" = {
+    "cidr" = "10.40.0.0/24"
+    "id" = "ajc890ivkp2gcf45hpbl"
+  }
+}

@@ -1,0 +1,5 @@
+PASS public application HTTP 80: version 0.1.0
+PASS public Grafana HTTP 80: database ok, version 13.3.1
+PASS Prometheus: 3 Kubernetes nodes, 3 node exporters, 54 CPU series, 22 healthy targets
+PASS Grafana login, Prometheus datasource and 25 dashboards (16 Kubernetes dashboards)
+All platform checks passed; the verification tunnel is closed.

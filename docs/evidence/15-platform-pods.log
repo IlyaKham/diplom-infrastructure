@@ -1,0 +1,36 @@
+NAMESPACE           NAME                                                 READY   STATUS    RESTARTS       AGE     IP             NODE                 NOMINATED NODE   READINESS GATES
+diplom-app          diplom-app-69b5dc95d-5xhvq                           1/1     Running   0              20m     10.96.131.5    diplom-worker-ejyg   <none>           <none>
+diplom-app          diplom-app-69b5dc95d-jv9rq                           1/1     Running   0              20m     10.96.129.4    diplom-worker-igon   <none>           <none>
+diplom-ingress      diplom-ingress-5745c87979-fsv5g                      1/1     Running   0              26m     10.96.131.4    diplom-worker-ejyg   <none>           <none>
+diplom-ingress      diplom-ingress-5745c87979-tql2b                      1/1     Running   0              26m     10.96.129.3    diplom-worker-igon   <none>           <none>
+diplom-monitoring   alertmanager-diplom-monitoring-alertmanager-0        2/2     Running   0              5m59s   10.96.128.9    diplom-worker-acez   <none>           <none>
+diplom-monitoring   diplom-grafana-977cc7b94-kj57j                       3/3     Running   0              10m     10.96.131.8    diplom-worker-ejyg   <none>           <none>
+diplom-monitoring   diplom-kube-state-metrics-74987d977d-wlqrt           1/1     Running   0              15m     10.96.129.8    diplom-worker-igon   <none>           <none>
+diplom-monitoring   diplom-monitoring-operator-7c8d9649c4-hsqgf          1/1     Running   0              15m     10.96.129.6    diplom-worker-igon   <none>           <none>
+diplom-monitoring   diplom-node-exporter-b8vpk                           1/1     Running   0              15m     10.30.0.31     diplom-worker-ejyg   <none>           <none>
+diplom-monitoring   diplom-node-exporter-bjn8w                           1/1     Running   0              15m     10.40.0.6      diplom-worker-acez   <none>           <none>
+diplom-monitoring   diplom-node-exporter-rw52l                           1/1     Running   0              15m     10.10.0.26     diplom-worker-igon   <none>           <none>
+diplom-monitoring   prometheus-diplom-monitoring-prometheus-0            2/2     Running   0              5m57s   10.96.129.13   diplom-worker-igon   <none>           <none>
+kube-system         calico-node-c8wjx                                    1/1     Running   0              119m    10.30.0.31     diplom-worker-ejyg   <none>           <none>
+kube-system         calico-node-dht6z                                    1/1     Running   0              120m    10.40.0.6      diplom-worker-acez   <none>           <none>
+kube-system         calico-node-l8xxn                                    1/1     Running   0              119m    10.10.0.26     diplom-worker-igon   <none>           <none>
+kube-system         calico-typha-5d9fddc5db-475hn                        1/1     Running   0              118m    10.30.0.31     diplom-worker-ejyg   <none>           <none>
+kube-system         calico-typha-horizontal-autoscaler-9b74c95f8-gbtj5   1/1     Running   0              123m    10.96.128.4    diplom-worker-acez   <none>           <none>
+kube-system         calico-typha-vertical-autoscaler-5c545f644d-fz85s    1/1     Running   3 (119m ago)   123m    10.96.128.8    diplom-worker-acez   <none>           <none>
+kube-system         coredns-dfd9cfcc9-8vhkq                              1/1     Running   0              123m    10.96.128.2    diplom-worker-acez   <none>           <none>
+kube-system         coredns-dfd9cfcc9-jmqwk                              1/1     Running   0              119m    10.96.131.3    diplom-worker-ejyg   <none>           <none>
+kube-system         ip-masq-agent-74rzb                                  1/1     Running   0              119m    10.30.0.31     diplom-worker-ejyg   <none>           <none>
+kube-system         ip-masq-agent-c6n4j                                  1/1     Running   0              120m    10.40.0.6      diplom-worker-acez   <none>           <none>
+kube-system         ip-masq-agent-fk2rf                                  1/1     Running   0              119m    10.10.0.26     diplom-worker-igon   <none>           <none>
+kube-system         kube-dns-autoscaler-86b7bddd47-ndfxk                 1/1     Running   0              123m    10.96.128.6    diplom-worker-acez   <none>           <none>
+kube-system         kube-proxy-kzhfn                                     1/1     Running   0              119m    10.30.0.31     diplom-worker-ejyg   <none>           <none>
+kube-system         kube-proxy-lpbb4                                     1/1     Running   0              119m    10.10.0.26     diplom-worker-igon   <none>           <none>
+kube-system         kube-proxy-zbfwn                                     1/1     Running   0              120m    10.40.0.6      diplom-worker-acez   <none>           <none>
+kube-system         metrics-server-59dcc6d845-gz7z9                      1/1     Running   0              123m    10.96.128.7    diplom-worker-acez   <none>           <none>
+kube-system         metrics-server-59dcc6d845-l8qvg                      1/1     Running   0              123m    10.96.128.3    diplom-worker-acez   <none>           <none>
+kube-system         npd-v0.8.0-2kv6m                                     1/1     Running   0              119m    10.96.131.2    diplom-worker-ejyg   <none>           <none>
+kube-system         npd-v0.8.0-jmrrx                                     1/1     Running   0              120m    10.96.128.5    diplom-worker-acez   <none>           <none>
+kube-system         npd-v0.8.0-q9jxq                                     1/1     Running   0              119m    10.96.129.2    diplom-worker-igon   <none>           <none>
+kube-system         yc-disk-csi-node-v2-528zj                            6/6     Running   0              119m    10.30.0.31     diplom-worker-ejyg   <none>           <none>
+kube-system         yc-disk-csi-node-v2-s586w                            6/6     Running   0              120m    10.40.0.6      diplom-worker-acez   <none>           <none>
+kube-system         yc-disk-csi-node-v2-zvn7j                            6/6     Running   0              119m    10.10.0.26     diplom-worker-igon   <none>           <none>

@@ -1,0 +1,69 @@
+# githubConfigUrl is filled by the installation script from the application repo URL.
+githubConfigSecret: diplom-github-auth
+runnerScaleSetName: diplom-deploy
+minRunners: 0
+maxRunners: 1
+controllerServiceAccount:
+  namespace: diplom-actions-system
+  name: diplom-arc-controller
+template:
+  spec:
+    serviceAccountName: diplom-actions-deployer
+    automountServiceAccountToken: true
+    terminationGracePeriodSeconds: 60
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1001
+      runAsGroup: 1001
+      fsGroup: 1001
+      seccompProfile:
+        type: RuntimeDefault
+    containers:
+      - name: runner
+        image: ghcr.io/actions/actions-runner:2.338.2@sha256:6d0b2d80d80f143f77dcb676e50920100bbb547e39e883454d57f45ab8c31300
+        command: [/home/runner/run.sh]
+        env:
+          - name: KUBECONFIG
+            value: /runner-kubeconfig/config
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+            ephemeral-storage: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+            ephemeral-storage: 1Gi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: [ALL]
+        volumeMounts:
+          - name: kubeconfig
+            mountPath: /runner-kubeconfig
+            readOnly: true
+    volumes:
+      - name: kubeconfig
+        configMap:
+          name: diplom-deploy-kubeconfig
+listenerTemplate:
+  spec:
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1001
+      runAsGroup: 1001
+      seccompProfile:
+        type: RuntimeDefault
+    containers:
+      - name: listener
+        resources:
+          requests:
+            cpu: 10m
+            memory: 32Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: [ALL]

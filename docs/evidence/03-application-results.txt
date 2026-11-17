@@ -1,0 +1,22 @@
+Stage 3 verified on 2026-11-17
+Registry: diplom-registry, crp85lbhbo07ldt2oj0c, ACTIVE
+Tagged image: cr.yandex/crp85lbhbo07ldt2oj0c/diplom-app:0.1.0
+Immutable image: cr.yandex/crp85lbhbo07ldt2oj0c/diplom-app@sha256:a8ddcb81bd996cd1c8a70a0ee6b91661986666116f9e62309989f6e9c5f373d9
+Registry public access bindings: none
+Terraform infrastructure plan: exit 0, No changes, 12 managed resources
+Terraform bootstrap plan: exit 0, No changes
+Published image smoke test: Windows PowerShell 5.1
+PASS /healthz: HTTP 200, ok
+PASS /: application HTML served
+PASS static CSS and JavaScript
+PASS /version.json: 0.1.0, revision local
+PASS missing page: HTTP 404
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+PASS nginx configuration; user UID=101; read-only filesystem
+All smoke checks passed.
+
+Local preview container: diplom-app-preview, running/healthy
+Preview endpoint: http://127.0.0.1:18080 (loopback only)
+Screenshots: not captured yet
+Remote GitLab repository and CI/CD: pending stage 5
